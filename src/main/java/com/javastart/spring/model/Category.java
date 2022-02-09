@@ -1,4 +1,4 @@
-package javastart.spring.entities;
+package com.javastart.spring.model;
 
 import javax.persistence.*;
 import java.util.HashSet;

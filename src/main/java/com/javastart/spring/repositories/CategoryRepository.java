@@ -1,6 +1,6 @@
-package javastart.spring.repositories;
+package com.javastart.spring.repositories;
 
-import javastart.spring.entities.Category;
+import com.javastart.spring.model.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

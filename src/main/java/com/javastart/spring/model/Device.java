@@ -1,6 +1,4 @@
-package javastart.spring.entities;
-
-import org.hibernate.annotations.Cascade;
+package com.javastart.spring.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;

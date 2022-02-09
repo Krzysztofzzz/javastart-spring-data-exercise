@@ -1,9 +1,9 @@
-package javastart.spring;
+package com.javastart.spring;
 
-import javastart.spring.entities.Category;
-import javastart.spring.entities.Customer;
-import javastart.spring.entities.Device;
-import javastart.spring.repositories.DeviceRepository;
+import com.javastart.spring.model.Customer;
+import com.javastart.spring.model.Category;
+import com.javastart.spring.model.Device;
+import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
