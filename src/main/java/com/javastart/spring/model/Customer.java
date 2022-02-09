@@ -1,6 +1,7 @@
 package com.javastart.spring.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,7 +21,10 @@ public class Customer {
     @Column(name = "person_id_number", length = 10)
     private String personIDNumber;
     @ManyToMany(mappedBy = "customers")
-    private List<Device> rentDevices;
+    private List<Device> rentDevices = new ArrayList<>();
+
+    public Customer() {
+    }
 
     public Long getId() {
         return id;
