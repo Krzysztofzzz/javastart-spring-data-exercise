@@ -29,18 +29,31 @@ public class ApplicationController {
 
     private void chooseOption(int option) {
         switch (option) {
-            case 1:
-                addDevice();
-                break;
-            case 5:
-                removeDeviceById();
-                break;
-
+            case 1 -> addDevice();
+            case 5 -> removeDeviceById();
+            case 8 -> exit();
         }
 
     }
 
+    private void exit(){
+        System.out.println("Koniec programu");
+    }
+
     private void addDevice() {
+        Device deviceToAdd = new Device();
+        System.out.println("Podaj nazwę urządzenia:");
+        scanner.nextLine();
+        deviceToAdd.setName(scanner.nextLine());
+        System.out.println("Podaj opis urządzenia:");
+        deviceToAdd.setDescription(scanner.nextLine());
+        System.out.println("Podaj ilość urządzeń w magazynie:");
+        deviceToAdd.setQuantity(scanner.nextInt());
+        System.out.println("Podaj cenę urządzenia:");
+        deviceToAdd.setPrice(scanner.nextDouble());
+        //Dodajemy kategorie?
+        deviceRepository.save(deviceToAdd);
+
 
     }
 
@@ -51,9 +64,7 @@ public class ApplicationController {
         if (deviceToRemove.isPresent()) {
             deviceRepository.deleteById(idOfDeviceToRemove);
             System.out.println("Usunięto urządzenie: " + deviceToRemove);
-        }else System.out.println("Brak urządzenia o ID: " + idOfDeviceToRemove);
-
-
+        } else System.out.println("Brak urządzenia o ID: " + idOfDeviceToRemove);
     }
 
     private void printOptions() {
