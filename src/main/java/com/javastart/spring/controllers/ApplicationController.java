@@ -1,5 +1,6 @@
 package com.javastart.spring.controllers;
 
+import com.javastart.spring.enums.Options;
 import com.javastart.spring.services.CategoryService;
 import com.javastart.spring.services.CustomerService;
 import com.javastart.spring.services.DeviceService;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 
 @Controller
 public class ApplicationController {
-    private int option = 0;
+    private Options option;
     private Scanner scanner = new Scanner(System.in);
 
     private DeviceService deviceService;
@@ -31,21 +32,22 @@ public class ApplicationController {
     public void run() {
         do {
             printOptions();
-            option = scanner.nextInt();
+            option = Options.chooseOption(scanner.nextInt());
             chooseOption(option);
-        } while (option != 8);
+
+        } while (!option.equals(Options.EXIT));
     }
 
-    private void chooseOption(int option) {
+    private void chooseOption(Options option) {
         switch (option) {
-            case 1 -> deviceService.addDevice();
-            case 2 -> categoryService.addCategory();
-            case 3 -> customerService.addClient();
-            case 4 -> rentService.rentDevice();
-            case 5 -> deviceService.removeDeviceById();
-            //case 6 -> categoryService.deleteCategoryById();
-            //case 7 -> customerService.removeCustomerById();
-            case 8 -> exit();
+            case ADD_DEVICE -> deviceService.addDevice();
+            case ADD_CATEGORY -> categoryService.addCategory();
+            case ADD_CUSTOMER -> customerService.addClient();
+            //case RENT_DEVICE -> rentService.rentDevice();
+            case REMOVE_DEVICE -> deviceService.removeDeviceById();
+            //case REMOVE_CATEGORY -> categoryService.deleteCategoryById();
+            //case REMOVE_CUSTOMER -> customerService.removeCustomerById();
+            case EXIT -> exit();
         }
     }
 

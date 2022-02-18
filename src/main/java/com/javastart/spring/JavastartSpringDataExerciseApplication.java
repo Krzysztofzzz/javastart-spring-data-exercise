@@ -1,6 +1,7 @@
 package com.javastart.spring;
 
 import com.javastart.spring.controllers.ApplicationController;
+import com.javastart.spring.enums.Options;
 import com.javastart.spring.model.Customer;
 import com.javastart.spring.model.Category;
 import com.javastart.spring.model.Device;
@@ -18,7 +19,6 @@ public class JavastartSpringDataExerciseApplication {
         ApplicationController applicationController = context.getBean(ApplicationController.class);
         DeviceRepository deviceRepository = context.getBean(DeviceRepository.class);
         CategoryRepository categoryRepository = context.getBean(CategoryRepository.class);
-
 
 
         Device device = new Device();
