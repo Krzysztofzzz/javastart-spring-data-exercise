@@ -1,5 +1,6 @@
 package com.javastart.spring;
 
+import com.javastart.spring.controllers.ApplicationController;
 import com.javastart.spring.model.Customer;
 import com.javastart.spring.model.Category;
 import com.javastart.spring.model.Device;
@@ -13,7 +14,10 @@ public class JavastartSpringDataExerciseApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringDataExerciseApplication.class, args);
+        ApplicationController applicationController = context.getBean(ApplicationController.class);
         DeviceRepository deviceRepository = context.getBean(DeviceRepository.class);
+
+        applicationController.run();
 
         Device device = new Device();
         device.setName("Wiertarka udarowa");
