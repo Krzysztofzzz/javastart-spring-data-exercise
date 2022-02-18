@@ -1,6 +1,8 @@
 package com.javastart.spring.controllers;
 
+import com.javastart.spring.model.Category;
 import com.javastart.spring.model.Device;
+import com.javastart.spring.repositories.CategoryRepository;
 import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.stereotype.Controller;
 
@@ -12,9 +14,11 @@ public class ApplicationController {
     private int option = 0;
     private Scanner scanner = new Scanner(System.in);
     private DeviceRepository deviceRepository;
+    private CategoryRepository categoryRepository;
 
-    public ApplicationController(DeviceRepository deviceRepository) {
+    public ApplicationController(DeviceRepository deviceRepository, CategoryRepository categoryRepository) {
         this.deviceRepository = deviceRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     public void run() {
@@ -30,13 +34,18 @@ public class ApplicationController {
     private void chooseOption(int option) {
         switch (option) {
             case 1 -> addDevice();
+            case 2 -> addCategory();
             case 5 -> removeDeviceById();
             case 8 -> exit();
         }
 
     }
 
-    private void exit(){
+    private void addCategory() {
+
+    }
+
+    private void exit() {
         System.out.println("Koniec programu");
     }
 
@@ -51,7 +60,15 @@ public class ApplicationController {
         deviceToAdd.setQuantity(scanner.nextInt());
         System.out.println("Podaj cenę urządzenia:");
         deviceToAdd.setPrice(scanner.nextDouble());
-        //Dodajemy kategorie?
+        System.out.println("Podaj id kategorii urządzenia:");
+        Long idOfCategoryToAdd = scanner.nextLong();
+        Optional<Category> categoryToAdd = categoryRepository.findById(idOfCategoryToAdd);
+        if (categoryToAdd.isPresent()) {
+            deviceToAdd.setCategory(categoryToAdd.get());
+        } else {
+            System.out.println("Brak kategorii o takim id");
+            return;
+        }
         deviceRepository.save(deviceToAdd);
 
 
