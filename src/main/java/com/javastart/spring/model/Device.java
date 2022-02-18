@@ -17,7 +17,7 @@ public class Device {
     private String description;
     private int quantity;
     private double price;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
     @ManyToMany(cascade = CascadeType.PERSIST)

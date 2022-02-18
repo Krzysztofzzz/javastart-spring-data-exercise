@@ -4,6 +4,7 @@ import com.javastart.spring.controllers.ApplicationController;
 import com.javastart.spring.model.Customer;
 import com.javastart.spring.model.Category;
 import com.javastart.spring.model.Device;
+import com.javastart.spring.repositories.CategoryRepository;
 import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ public class JavastartSpringDataExerciseApplication {
         ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringDataExerciseApplication.class, args);
         ApplicationController applicationController = context.getBean(ApplicationController.class);
         DeviceRepository deviceRepository = context.getBean(DeviceRepository.class);
+        CategoryRepository categoryRepository = context.getBean(CategoryRepository.class);
 
 
 
@@ -38,6 +40,7 @@ public class JavastartSpringDataExerciseApplication {
         device.setCategory(category);
         device.addCustomer(customer);
 
+        categoryRepository.save(category);
         deviceRepository.save(device);
 
         applicationController.run();

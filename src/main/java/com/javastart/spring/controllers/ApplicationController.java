@@ -42,7 +42,14 @@ public class ApplicationController {
     }
 
     private void addCategory() {
-
+        Category categoryToAdd = new Category();
+        System.out.println("Podaj nazwę kategorii:");
+        scanner.nextLine();
+        categoryToAdd.setName(scanner.nextLine());
+        System.out.println("Podaj opis kategorii");
+        categoryToAdd.setDescription(scanner.nextLine());
+        categoryRepository.save(categoryToAdd);
+        System.out.println("Dodano kategorię: " + categoryToAdd.getName());
     }
 
     private void exit() {
@@ -70,6 +77,7 @@ public class ApplicationController {
             return;
         }
         deviceRepository.save(deviceToAdd);
+        System.out.println("Dodano urządzenie: " + deviceToAdd.getName());
 
 
     }
@@ -87,6 +95,7 @@ public class ApplicationController {
     private void printOptions() {
         System.out.println("Opcje:");
         System.out.println("1 - Dodaj urządzenie");
+        System.out.println("2 - Dodaj kategorię");
 
         System.out.println("5 - Usuń urządzenie");
 
