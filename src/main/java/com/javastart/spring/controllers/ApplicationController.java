@@ -1,8 +1,10 @@
 package com.javastart.spring.controllers;
 
 import com.javastart.spring.model.Category;
+import com.javastart.spring.model.Customer;
 import com.javastart.spring.model.Device;
 import com.javastart.spring.repositories.CategoryRepository;
+import com.javastart.spring.repositories.CustomerRepository;
 import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.stereotype.Controller;
 
@@ -15,9 +17,14 @@ public class ApplicationController {
     private Scanner scanner = new Scanner(System.in);
     private DeviceRepository deviceRepository;
     private CategoryRepository categoryRepository;
+    private CustomerRepository customerRepository;
 
-    public ApplicationController(DeviceRepository deviceRepository, CategoryRepository categoryRepository) {
+    public ApplicationController(DeviceRepository deviceRepository,
+                                 CategoryRepository categoryRepository,
+                                 CustomerRepository customerRepository)
+    {
         this.deviceRepository = deviceRepository;
+        this.customerRepository = customerRepository;
         this.categoryRepository = categoryRepository;
     }
 
@@ -27,17 +34,47 @@ public class ApplicationController {
             option = scanner.nextInt();
             chooseOption(option);
         } while (option != 8);
-
-
     }
 
     private void chooseOption(int option) {
         switch (option) {
             case 1 -> addDevice();
             case 2 -> addCategory();
+            case 3 -> addClient();
+
             case 5 -> removeDeviceById();
+           // case 6 -> deleteCategoryById();
+
             case 8 -> exit();
         }
+
+    }
+    /*private void deleteCategoryById(){
+        System.out.println("Podaj id kategorii do usunięcia:");
+        Long idOfCategoryToDelete = scanner.nextLong();
+        Optional<Category> categoryToDelete = categoryRepository.findById(idOfCategoryToDelete);
+        if (categoryToDelete.isPresent()) {
+            categoryRepository.deleteById(idOfCategoryToDelete);
+            System.out.println("Usunięto kategorię o id: " + idOfCategoryToDelete);
+        }else {
+            System.out.println("Brak categorii o id: " + idOfCategoryToDelete);
+        }
+    }*/
+
+    private void addClient() {
+        Customer customerToAdd = new Customer();
+        System.out.println("Podaj imię klienta:");
+        scanner.nextLine();
+        customerToAdd.setFirstName(scanner.nextLine());
+        System.out.println("Podaj nazwisko klienta:");
+        customerToAdd.setLastName(scanner.nextLine());
+        System.out.println("Podaj numer PESEL klienta (max 11 znaków):");
+        customerToAdd.setPeselNumber(scanner.nextLine());
+        System.out.println("Podaj ID klienta (max 10 znaków):");
+        customerToAdd.setPersonIDNumber(scanner.nextLine());
+        customerRepository.save(customerToAdd);
+
+        System.out.println("Dodano klienta: " + customerToAdd.getFirstName() + " " + customerToAdd.getLastName());
 
     }
 
@@ -96,8 +133,10 @@ public class ApplicationController {
         System.out.println("Opcje:");
         System.out.println("1 - Dodaj urządzenie");
         System.out.println("2 - Dodaj kategorię");
+        System.out.println("3 - Dodaj clienta");
 
         System.out.println("5 - Usuń urządzenie");
+        System.out.println("6 - Usuń kategorię");
 
         System.out.println("8 - Koniec");
 
