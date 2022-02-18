@@ -17,7 +17,7 @@ public class JavastartSpringDataExerciseApplication {
         ApplicationController applicationController = context.getBean(ApplicationController.class);
         DeviceRepository deviceRepository = context.getBean(DeviceRepository.class);
 
-        applicationController.run();
+
 
         Device device = new Device();
         device.setName("Wiertarka udarowa");
@@ -39,6 +39,8 @@ public class JavastartSpringDataExerciseApplication {
         device.addCustomer(customer);
 
         deviceRepository.save(device);
+
+        applicationController.run();
     }
 
 }
