@@ -21,8 +21,7 @@ public class ApplicationController {
 
     public ApplicationController(DeviceRepository deviceRepository,
                                  CategoryRepository categoryRepository,
-                                 CustomerRepository customerRepository)
-    {
+                                 CustomerRepository customerRepository) {
         this.deviceRepository = deviceRepository;
         this.customerRepository = customerRepository;
         this.categoryRepository = categoryRepository;
@@ -43,12 +42,21 @@ public class ApplicationController {
             case 3 -> addClient();
 
             case 5 -> removeDeviceById();
-           // case 6 -> deleteCategoryById();
+            // case 6 -> deleteCategoryById();
+            //case 7 -> removeCustomerById();
 
             case 8 -> exit();
         }
-
     }
+
+/*    private void removeCustomerById(){
+        System.out.println("Podaj id klienta do usunięcia:");
+        Long idOfCustomerToRemove = scanner.nextLong();
+        customerRepository.deleteById(idOfCustomerToRemove);
+        System.out.println("Usunięto klienta o id: " + idOfCustomerToRemove);
+
+    }*/
+
     /*private void deleteCategoryById(){
         System.out.println("Podaj id kategorii do usunięcia:");
         Long idOfCategoryToDelete = scanner.nextLong();
@@ -137,7 +145,7 @@ public class ApplicationController {
 
         System.out.println("5 - Usuń urządzenie");
         System.out.println("6 - Usuń kategorię");
-
+        System.out.println("7 - Usuń klienta");
         System.out.println("8 - Koniec");
 
         System.out.println("Podaj Id opcji:");
