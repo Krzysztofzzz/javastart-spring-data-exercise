@@ -28,7 +28,7 @@ public class CategoryService {
         System.out.println("Dodano kategorię: " + categoryToAdd.getName());
     }
 
-/*        private void deleteCategoryById(){
+/*        public void deleteCategoryById(){
         System.out.println("Podaj id kategorii do usunięcia:");
         Long idOfCategoryToDelete = scanner.nextLong();
         Optional<Category> categoryToDelete = categoryRepository.findById(idOfCategoryToDelete);

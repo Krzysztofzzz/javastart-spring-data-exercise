@@ -32,7 +32,7 @@ public class CustomerService {
 
     }
 
-    /*    private void removeCustomerById(){
+    /*    public void removeCustomerById(){
         System.out.println("Podaj id klienta do usunięcia:");
         Long idOfCustomerToRemove = scanner.nextLong();
         customerRepository.deleteById(idOfCustomerToRemove);

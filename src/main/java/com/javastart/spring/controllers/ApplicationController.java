@@ -3,6 +3,7 @@ package com.javastart.spring.controllers;
 import com.javastart.spring.services.CategoryService;
 import com.javastart.spring.services.CustomerService;
 import com.javastart.spring.services.DeviceService;
+import com.javastart.spring.services.RentService;
 import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
@@ -15,13 +16,16 @@ public class ApplicationController {
     private DeviceService deviceService;
     private CategoryService categoryService;
     private CustomerService customerService;
+    private RentService rentService;
 
     public ApplicationController(CategoryService categoryService,
                                  DeviceService deviceService,
-                                 CustomerService customerService) {
+                                 CustomerService customerService,
+                                 RentService rentService) {
         this.categoryService = categoryService;
         this.deviceService = deviceService;
         this.customerService = customerService;
+        this.rentService = rentService;
     }
 
     public void run() {
@@ -37,11 +41,10 @@ public class ApplicationController {
             case 1 -> deviceService.addDevice();
             case 2 -> categoryService.addCategory();
             case 3 -> customerService.addClient();
-
+            case 4 -> rentService.rentDevice();
             case 5 -> deviceService.removeDeviceById();
-            // case 6 -> deleteCategoryById();
-            //case 7 -> removeCustomerById();
-
+            //case 6 -> categoryService.deleteCategoryById();
+            //case 7 -> customerService.removeCustomerById();
             case 8 -> exit();
         }
     }
@@ -55,7 +58,7 @@ public class ApplicationController {
         System.out.println("1 - Dodaj urządzenie");
         System.out.println("2 - Dodaj kategorię");
         System.out.println("3 - Dodaj clienta");
-
+        System.out.println("4 - Wyporzycz urządzenie");
         System.out.println("5 - Usuń urządzenie");
         System.out.println("6 - Usuń kategorię");
         System.out.println("7 - Usuń klienta");
