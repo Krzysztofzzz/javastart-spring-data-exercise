@@ -20,7 +20,8 @@ public class Customer {
     private String peselNumber;
     @Column(name = "person_id_number", length = 10)
     private String personIDNumber;
-    @ManyToMany(mappedBy = "customers")
+    @ManyToMany(mappedBy = "customers",
+    fetch = FetchType.EAGER)
     private List<Device> rentDevices = new ArrayList<>();
 
     public Customer() {

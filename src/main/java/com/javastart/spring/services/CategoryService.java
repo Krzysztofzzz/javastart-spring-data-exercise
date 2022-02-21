@@ -28,15 +28,15 @@ public class CategoryService {
         System.out.println("Dodano kategorię: " + categoryToAdd.getName());
     }
 
-/*        public void deleteCategoryById(){
+        public void removeCategoryById(){
         System.out.println("Podaj id kategorii do usunięcia:");
         Long idOfCategoryToDelete = scanner.nextLong();
-        Optional<Category> categoryToDelete = categoryRepository.findById(idOfCategoryToDelete);
-        if (categoryToDelete.isPresent()) {
-            categoryRepository.deleteById(idOfCategoryToDelete);
+        Optional<Category> categoryToRemove = categoryRepository.findById(idOfCategoryToDelete);
+        if (categoryToRemove.isPresent()) {
+            categoryRepository.delete(categoryToRemove);
             System.out.println("Usunięto kategorię o id: " + idOfCategoryToDelete);
         }else {
             System.out.println("Brak categorii o id: " + idOfCategoryToDelete);
         }
-    }*/
+    }
 }

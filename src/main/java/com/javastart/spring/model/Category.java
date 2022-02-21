@@ -15,7 +15,8 @@ public class Category {
     private String name;
     @Column(length = 1024)
     private String description;
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",
+    cascade = CascadeType.REMOVE)
     private Set<Device> devices = new HashSet<>();
 
     public Long getId() {
