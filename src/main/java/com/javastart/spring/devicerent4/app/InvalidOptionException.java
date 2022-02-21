@@ -1,4 +1,7 @@
 package com.javastart.spring.devicerent4.app;
 
-public class InvalidOptionException {
+class InvalidOptionException extends RuntimeException {
+    InvalidOptionException() {
+        super("Opcja nie istnieje");
+    }
 }
