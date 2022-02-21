@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -21,6 +22,18 @@ public class DeviceController {
     public DeviceController(DeviceRepository deviceRepository, CategoryRepository categoryRepository) {
         this.deviceRepository = deviceRepository;
         this.categoryRepository = categoryRepository;
+    }
+
+    public void searchDevice() {
+        System.out.println("Podaj fragment nazwy:");
+        String name = scanner.nextLine();
+        List<Device> devices = deviceRepository.findAllByNameContainingIgnoreCase(name);
+        if(devices.isEmpty())
+            System.out.println("Brak urządzeń o wskazanej nazwie");
+        else {
+            System.out.println("Znalezione urządzenia:");
+            devices.forEach(System.out::println);
+        }
     }
 
     @Transactional
@@ -45,13 +58,13 @@ public class DeviceController {
         device.setPrice(scanner.nextDouble());
         System.out.println("Ilość(szt) urządzenia:");
         device.setQuantity(scanner.nextInt());
-        System.out.println("Kategoria(id) urządzenia:");
-        long categoryId = scanner.nextLong();
-        Optional<Category> category = categoryRepository.findById(categoryId);
         scanner.nextLine();
+        System.out.println("Kategoria urządzenia:");
+        String categoryName = scanner.nextLine();
+        Optional<Category> category = categoryRepository.findByNameIgnoreCase(categoryName);
         category.ifPresentOrElse(device::setCategory,
                 () -> {
-                    throw new CategoryNotFoundException("Kategoria o podanym ID nie istnieje");
+                    throw new CategoryNotFoundException("Kategoria o takiej nazwie nie istnieje");
                 }
         );
         return device;

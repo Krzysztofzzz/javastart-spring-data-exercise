@@ -33,22 +33,23 @@ public class RentController {
     }
 
     private void rent() {
-        System.out.println("Podaj ID klienta:");
-        long customerId = scanner.nextLong();
+        System.out.println("Podaj pesel klienta:");
+        String pesel = scanner.nextLine();
         System.out.println("Podaj ID urządzenia:");
         long deviceId = scanner.nextLong();
-        Optional<Customer> customer = customerRepository.findById(customerId);
+        Optional<Customer> customer = customerRepository.findByPesel(pesel);
         Optional<Device> device = deviceRepository.findById(deviceId);
         if(customer.isPresent())
             device.ifPresentOrElse(dev -> {
-                if(dev.getQuantity() > dev.getCustomers().size())
+                if(dev.getQuantity() > dev.getCustomers().size()) {
                     dev.addCustomer(customer.get());
-                else
+                    System.out.println("Wypożyczono urządzenie.");
+                } else
                     throw new RentException("Brak wolnych urządzeń o wskazanym ID");
             }, () -> {
                 throw new RentException("Brak urządzenia o wskazanym ID");
             });
         else
-            throw new RentException("Brak klienta o wskazanym ID");
+            throw new RentException("Brak klienta o wskazanym peselu");
     }
 }
