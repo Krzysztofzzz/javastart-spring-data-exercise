@@ -2,6 +2,7 @@ package com.javastart.spring.services;
 
 import com.javastart.spring.model.Customer;
 import com.javastart.spring.repositories.CustomerRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,7 +35,6 @@ public class CustomerService {
 
     }
 
-    @Transactional
     public void removeCustomerById() {
         System.out.println("Podaj id klienta do usunięcia:");
         Long idOfCustomerToRemove = scanner.nextLong();

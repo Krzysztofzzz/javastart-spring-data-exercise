@@ -29,7 +29,6 @@ public class CategoryService {
         System.out.println("Dodano kategorię: " + categoryToAdd.getName());
     }
 
-    @Transactional
     public void removeCategoryById() {
         System.out.println("Podaj id kategorii do usunięcia:");
         Long idOfCategoryToDelete = scanner.nextLong();

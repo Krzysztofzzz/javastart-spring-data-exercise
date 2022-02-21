@@ -11,5 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface CategoryRepository extends CrudRepository<Category,Long> {
-
+    @Override
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Category c WHERE c.id = :id")
+    void deleteById(Long id);
 }
