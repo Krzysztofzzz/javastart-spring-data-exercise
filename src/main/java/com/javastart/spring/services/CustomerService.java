@@ -21,7 +21,6 @@ public class CustomerService {
     public void addClient() {
         Customer customerToAdd = new Customer();
         System.out.println("Podaj imię klienta:");
-        scanner.nextLine();
         customerToAdd.setFirstName(scanner.nextLine());
         System.out.println("Podaj nazwisko klienta:");
         customerToAdd.setLastName(scanner.nextLine());

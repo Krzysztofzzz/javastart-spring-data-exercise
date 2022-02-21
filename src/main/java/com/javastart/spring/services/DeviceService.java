@@ -6,6 +6,7 @@ import com.javastart.spring.repositories.CategoryRepository;
 import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -24,7 +25,6 @@ public class DeviceService {
     public void addDevice() {
         Device deviceToAdd = new Device();
         System.out.println("Podaj nazwę urządzenia:");
-        scanner.nextLine();
         deviceToAdd.setName(scanner.nextLine());
         System.out.println("Podaj opis urządzenia:");
         deviceToAdd.setDescription(scanner.nextLine());
@@ -34,6 +34,7 @@ public class DeviceService {
         deviceToAdd.setPrice(scanner.nextDouble());
         System.out.println("Podaj id kategorii urządzenia:");
         Long idOfCategoryToAdd = scanner.nextLong();
+        scanner.nextLine();
         Optional<Category> categoryToAdd = categoryRepository.findById(idOfCategoryToAdd);
         if (categoryToAdd.isPresent()) {
             deviceToAdd.setCategory(categoryToAdd.get());

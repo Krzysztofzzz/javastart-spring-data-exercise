@@ -2,6 +2,7 @@ package com.javastart.spring.services;
 
 import com.javastart.spring.model.Category;
 import com.javastart.spring.repositories.CategoryRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,7 +22,6 @@ public class CategoryService {
     public void addCategory() {
         Category categoryToAdd = new Category();
         System.out.println("Podaj nazwę kategorii:");
-        scanner.nextLine();
         categoryToAdd.setName(scanner.nextLine());
         System.out.println("Podaj opis kategorii");
         categoryToAdd.setDescription(scanner.nextLine());
