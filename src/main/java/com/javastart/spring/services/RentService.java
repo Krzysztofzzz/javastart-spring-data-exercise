@@ -34,11 +34,11 @@ public class RentService {
         }
         System.out.println("Urządzenie: " + deviceToRent.get().getName());
 
-        System.out.println("Wpisz id klienta który wypożycza:");
-        Long rentingCustomerId = scanner.nextLong();
-        Optional<Customer> rentingCustomer = customerRepository.findById(rentingCustomerId);
+        System.out.println("Wpisz pesel klienta który wypożycza:");
+        String rentingCustomerPesel = scanner.nextLine();
+        Optional<Customer> rentingCustomer = customerRepository.findCustomerByPeselNumber(rentingCustomerPesel);
         if (rentingCustomer.isEmpty()) {
-            System.out.println("Brak klienta o id: " + rentingCustomerId);
+            System.out.println("Brak klienta o peselu: " + rentingCustomerPesel);
             return;
         }
         System.out.println("Klient: " + rentingCustomer.get().getFirstName() + " " + rentingCustomer.get().getLastName());
