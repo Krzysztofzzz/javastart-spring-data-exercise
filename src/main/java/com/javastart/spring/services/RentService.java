@@ -6,6 +6,7 @@ import com.javastart.spring.repositories.CustomerRepository;
 import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class RentService {
         this.customerRepository = customerRepository;
     }
 
+    @Transactional
     public void rentDevice() {
         System.out.println("Wpisz id urządzenia do wypożyczenia:");
         Long rentedDeviceId = scanner.nextLong();
