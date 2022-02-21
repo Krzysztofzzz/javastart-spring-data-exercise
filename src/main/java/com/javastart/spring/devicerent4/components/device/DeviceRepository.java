@@ -1,6 +1,6 @@
-package com.javastart.spring.repositories;
+package com.javastart.spring.devicerent4.components.device;
 
-import com.javastart.spring.model.Device;
+import com.javastart.spring.devicerent4.components.device.Device;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

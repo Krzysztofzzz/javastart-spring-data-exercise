@@ -1,6 +1,6 @@
-package com.javastart.spring.repositories;
+package com.javastart.spring.devicerent4.components.category;
 
-import com.javastart.spring.model.Category;
+import com.javastart.spring.devicerent4.components.category.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

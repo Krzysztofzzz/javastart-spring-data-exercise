@@ -1,4 +1,6 @@
-package com.javastart.spring.model;
+package com.javastart.spring.devicerent4.components.customer;
+
+import com.javastart.spring.devicerent4.components.device.Device;
 
 import javax.persistence.*;
 import java.util.ArrayList;
