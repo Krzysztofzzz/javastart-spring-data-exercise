@@ -22,6 +22,7 @@ public class DeviceService {
         this.categoryRepository = categoryRepository;
     }
 
+    @Transactional
     public void addDevice() {
         Device deviceToAdd = new Device();
         System.out.println("Podaj nazwę urządzenia:");
@@ -46,6 +47,7 @@ public class DeviceService {
         System.out.println("Dodano urządzenie: " + deviceToAdd.getName());
     }
 
+    @Transactional
     public void removeDeviceById() {
         System.out.println("Podaj ID urządzenia do usunięcia:");
         Long idOfDeviceToRemove = scanner.nextLong();

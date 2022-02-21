@@ -18,6 +18,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    @Transactional
     public void addClient() {
         Customer customerToAdd = new Customer();
         System.out.println("Podaj imię klienta:");
@@ -34,6 +35,7 @@ public class CustomerService {
 
     }
 
+    @Transactional
     public void removeCustomerById() {
         System.out.println("Podaj id klienta do usunięcia:");
         Long idOfCustomerToRemove = scanner.nextLong();
