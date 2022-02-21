@@ -4,6 +4,8 @@ import com.javastart.spring.model.Customer;
 import com.javastart.spring.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.Scanner;
 
 @Service
@@ -32,11 +34,16 @@ public class CustomerService {
 
     }
 
-    /*    public void removeCustomerById(){
+    @Transactional
+    public void removeCustomerById() {
         System.out.println("Podaj id klienta do usunięcia:");
         Long idOfCustomerToRemove = scanner.nextLong();
-        customerRepository.deleteById(idOfCustomerToRemove);
-        System.out.println("Usunięto klienta o id: " + idOfCustomerToRemove);
-
-    }*/
+        Optional<Customer> customerToRemove = customerRepository.findById(idOfCustomerToRemove);
+        if (customerToRemove.isPresent()){
+            customerRepository.deleteById(idOfCustomerToRemove);
+            System.out.println("Usunięto klienta o id: " + idOfCustomerToRemove);
+        }else {
+            System.out.println("Brak klienta o wskazanym id.");
+        }
+    }
 }

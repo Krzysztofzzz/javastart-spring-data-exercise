@@ -4,6 +4,7 @@ import com.javastart.spring.model.Category;
 import com.javastart.spring.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -28,14 +29,15 @@ public class CategoryService {
         System.out.println("Dodano kategorię: " + categoryToAdd.getName());
     }
 
-        public void removeCategoryById(){
+    @Transactional
+    public void removeCategoryById() {
         System.out.println("Podaj id kategorii do usunięcia:");
         Long idOfCategoryToDelete = scanner.nextLong();
         Optional<Category> categoryToRemove = categoryRepository.findById(idOfCategoryToDelete);
         if (categoryToRemove.isPresent()) {
-            categoryRepository.delete(categoryToRemove);
+            categoryRepository.deleteById(idOfCategoryToDelete);
             System.out.println("Usunięto kategorię o id: " + idOfCategoryToDelete);
-        }else {
+        } else {
             System.out.println("Brak categorii o id: " + idOfCategoryToDelete);
         }
     }

@@ -17,10 +17,10 @@ public class Device {
     private String description;
     private int quantity;
     private double price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "category_id")
     private Category category;
-    @ManyToMany(cascade = CascadeType.PERSIST,
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
     fetch = FetchType.EAGER)
     @JoinTable(name = "device_customers",
             joinColumns = {@JoinColumn(name = "device_id", referencedColumnName = "id")},
