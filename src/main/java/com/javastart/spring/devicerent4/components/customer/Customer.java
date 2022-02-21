@@ -19,9 +19,9 @@ public class Customer {
     @Column(name = "last_name")
     private String lastName;
     @Column(length = 11)
-    private String peselNumber;
+    private String pesel;
     @Column(name = "person_id_number", length = 10)
-    private String personIDNumber;
+    private String IdNumber;
     @ManyToMany(mappedBy = "customers")
     private List<Device> rentDevices = new ArrayList<>();
 
@@ -52,20 +52,20 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getPeselNumber() {
-        return peselNumber;
+    public String getPesel() {
+        return pesel;
     }
 
-    public void setPeselNumber(String peselNumber) {
-        this.peselNumber = peselNumber;
+    public void setPesel(String peselNumber) {
+        this.pesel = peselNumber;
     }
 
-    public String getPersonIDNumber() {
-        return personIDNumber;
+    public String getIdNumber() {
+        return IdNumber;
     }
 
-    public void setPersonIDNumber(String personIDNumber) {
-        this.personIDNumber = personIDNumber;
+    public void setIdNumber(String personIDNumber) {
+        this.IdNumber = personIDNumber;
     }
 
     public List<Device> getRentDevices() {
@@ -81,8 +81,8 @@ public class Customer {
                 "id=" + id +
                 ", imię='" + firstName + '\'' +
                 ", nazwisko='" + lastName + '\'' +
-                ", pesel='" + peselNumber + '\'' +
-                ", nr dowodu='" + personIDNumber + '\'' +
+                ", pesel='" + pesel + '\'' +
+                ", nr dowodu='" + IdNumber + '\'' +
                 '}';
     }
 
@@ -91,11 +91,11 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(peselNumber, customer.peselNumber) && Objects.equals(personIDNumber, customer.personIDNumber) && Objects.equals(rentDevices, customer.rentDevices);
+        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(pesel, customer.pesel) && Objects.equals(IdNumber, customer.IdNumber) && Objects.equals(rentDevices, customer.rentDevices);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, peselNumber, personIDNumber, rentDevices);
+        return Objects.hash(id, firstName, lastName, pesel, IdNumber, rentDevices);
     }
 }

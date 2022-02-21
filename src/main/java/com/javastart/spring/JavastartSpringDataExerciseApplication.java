@@ -28,8 +28,8 @@ public class JavastartSpringDataExerciseApplication {
         Customer customer = new Customer();
         customer.setFirstName("Jan");
         customer.setLastName("Kowalski");
-        customer.setPeselNumber("90908765123");
-        customer.setPersonIDNumber("ABC678123");
+        customer.setPesel("90908765123");
+        customer.setIdNumber("ABC678123");
 
         device.setCategory(category);
         device.addCustomer(customer);

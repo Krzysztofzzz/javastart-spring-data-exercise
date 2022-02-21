@@ -9,12 +9,11 @@ import java.util.Scanner;
 @Service
 public class CategoryController {
 
-    private Scanner scanner;
+    private Scanner scanner = new Scanner(System.in);
     private CategoryRepository categoryRepository;
 
     @Autowired
-    public CategoryController(Scanner scanner, CategoryRepository categoryRepository) {
-        this.scanner = scanner;
+    public CategoryController(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
