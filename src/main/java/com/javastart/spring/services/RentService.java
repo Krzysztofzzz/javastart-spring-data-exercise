@@ -27,6 +27,7 @@ public class RentService {
     public void rentDevice() {
         System.out.println("Wpisz id urządzenia do wypożyczenia:");
         Long rentedDeviceId = scanner.nextLong();
+        scanner.nextLine();
         Optional<Device> deviceToRent = deviceRepository.findById(rentedDeviceId);
         if (deviceToRent.isEmpty()) {
             System.out.println("Brak urządzenia o id: " + rentedDeviceId);

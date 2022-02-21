@@ -5,10 +5,12 @@ public enum Options {
     ADD_CATEGORY(2),
     ADD_CUSTOMER(3),
     RENT_DEVICE(4),
-    REMOVE_DEVICE(5),
-    REMOVE_CATEGORY(6),
-    REMOVE_CUSTOMER(7),
-    EXIT(8);
+    FIND_DEVICE(5),
+    REMOVE_DEVICE(6),
+    REMOVE_CATEGORY(7),
+    REMOVE_CUSTOMER(8),
+    EXIT(9);
+
 
     private final int option;
 

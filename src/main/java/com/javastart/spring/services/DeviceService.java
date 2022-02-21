@@ -7,6 +7,8 @@ import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -22,7 +24,14 @@ public class DeviceService {
         this.categoryRepository = categoryRepository;
     }
 
-    @Transactional
+    public void findDevice(){
+        List<Device> devices;
+        System.out.println("Podaj nazwę urządzenia aby je wyszukać:");
+        String name = scanner.nextLine();
+        devices = deviceRepository.findByNameContainingIgnoreCase(name);
+        System.out.println("Wyszukane urządzenia: " + devices);
+    }
+
     public void addDevice() {
         Device deviceToAdd = new Device();
         System.out.println("Podaj nazwę urządzenia:");
@@ -33,6 +42,7 @@ public class DeviceService {
         deviceToAdd.setQuantity(scanner.nextInt());
         System.out.println("Podaj cenę urządzenia:");
         deviceToAdd.setPrice(scanner.nextDouble());
+        scanner.nextLine();
         System.out.println("Podaj nazwę kategorii urządzenia:");
         String nameOfCategoryToAdd = scanner.nextLine();
         Optional<Category> categoryToAdd = categoryRepository.findCategoryByNameIgnoreCase(nameOfCategoryToAdd);

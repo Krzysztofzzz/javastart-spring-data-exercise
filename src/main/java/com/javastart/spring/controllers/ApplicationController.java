@@ -44,10 +44,12 @@ public class ApplicationController {
             case ADD_CATEGORY -> categoryService.addCategory();
             case ADD_CUSTOMER -> customerService.addClient();
             case RENT_DEVICE -> rentService.rentDevice();
+            case FIND_DEVICE -> deviceService.findDevice();
             case REMOVE_DEVICE -> deviceService.removeDeviceById();
             case REMOVE_CATEGORY -> categoryService.removeCategoryById();
             case REMOVE_CUSTOMER -> customerService.removeCustomerById();
             case EXIT -> exit();
+
         }
     }
 
@@ -61,10 +63,11 @@ public class ApplicationController {
         System.out.println("2 - Dodaj kategorię");
         System.out.println("3 - Dodaj clienta");
         System.out.println("4 - Wyporzycz urządzenie");
-        System.out.println("5 - Usuń urządzenie");
-        System.out.println("6 - Usuń kategorię");
-        System.out.println("7 - Usuń klienta");
-        System.out.println("8 - Koniec");
+        System.out.println("5 - Znajdź urządzenie");
+        System.out.println("6 - Usuń urządzenie");
+        System.out.println("7 - Usuń kategorię");
+        System.out.println("8 - Usuń klienta");
+        System.out.println("9 - Koniec");
 
         System.out.println("Podaj Id opcji:");
     }
