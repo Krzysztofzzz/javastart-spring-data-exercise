@@ -12,6 +12,7 @@ public class Device {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JoinColumn
     private String name;
     @Column(length = 2048)
     private String description;

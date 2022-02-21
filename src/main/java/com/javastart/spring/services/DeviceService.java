@@ -33,10 +33,9 @@ public class DeviceService {
         deviceToAdd.setQuantity(scanner.nextInt());
         System.out.println("Podaj cenę urządzenia:");
         deviceToAdd.setPrice(scanner.nextDouble());
-        System.out.println("Podaj id kategorii urządzenia:");
-        Long idOfCategoryToAdd = scanner.nextLong();
-        scanner.nextLine();
-        Optional<Category> categoryToAdd = categoryRepository.findById(idOfCategoryToAdd);
+        System.out.println("Podaj nazwę kategorii urządzenia:");
+        String nameOfCategoryToAdd = scanner.nextLine();
+        Optional<Category> categoryToAdd = categoryRepository.findCategoryByNameIgnoreCase(nameOfCategoryToAdd);
         if (categoryToAdd.isPresent()) {
             deviceToAdd.setCategory(categoryToAdd.get());
         } else {

@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface DeviceRepository extends CrudRepository<Device, Long> {
 
+
 }
