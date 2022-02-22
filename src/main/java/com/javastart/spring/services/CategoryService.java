@@ -2,6 +2,7 @@ package com.javastart.spring.services;
 
 import com.javastart.spring.model.Category;
 import com.javastart.spring.repositories.CategoryRepository;
+import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +14,12 @@ import java.util.Scanner;
 public class CategoryService {
 
     private CategoryRepository categoryRepository;
-    private Scanner scanner = new Scanner(System.in);
+    private DeviceRepository deviceRepository;
+    private Scanner scanner;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository, Scanner scanner, DeviceRepository deviceRepository) {
+        this.deviceRepository = deviceRepository;
+        this.scanner = scanner;
         this.categoryRepository = categoryRepository;
     }
 
@@ -34,6 +38,7 @@ public class CategoryService {
         Long idOfCategoryToDelete = scanner.nextLong();
         Optional<Category> categoryToRemove = categoryRepository.findById(idOfCategoryToDelete);
         if (categoryToRemove.isPresent()) {
+            deviceRepository.deleteAllDevicesByCategoryId(idOfCategoryToDelete);
             categoryRepository.deleteById(idOfCategoryToDelete);
             System.out.println("Usunięto kategorię o id: " + idOfCategoryToDelete);
         } else {

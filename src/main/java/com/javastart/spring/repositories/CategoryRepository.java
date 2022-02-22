@@ -15,7 +15,7 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
 
     Optional<Category> findCategoryByNameIgnoreCase(String name);
 
-    @Override
+
     @Modifying
     @Transactional
     @Query("DELETE FROM Category c WHERE c.id = :id")

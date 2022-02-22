@@ -1,15 +1,17 @@
 package com.javastart.spring;
 
 import com.javastart.spring.controllers.ApplicationController;
-import com.javastart.spring.enums.Options;
-import com.javastart.spring.model.Customer;
 import com.javastart.spring.model.Category;
+import com.javastart.spring.model.Customer;
 import com.javastart.spring.model.Device;
 import com.javastart.spring.repositories.CategoryRepository;
 import com.javastart.spring.repositories.DeviceRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+import java.util.Scanner;
 
 @SpringBootApplication
 public class JavastartSpringDataExerciseApplication {
@@ -44,6 +46,12 @@ public class JavastartSpringDataExerciseApplication {
         deviceRepository.save(device);
 
         applicationController.run();
+
+
+    }
+    @Bean
+    public Scanner scanner () {
+        return new Scanner(System.in);
     }
 
 }
