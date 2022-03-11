@@ -1,0 +1,74 @@
+@startuml
+interface CrudRepository
+annotation Service
+annotation Repository
+
+class CategoryRepository{
+    +Optional<Category> findCategoryByNameIgnoreCase(String name);
+    +void deleteById(Long id);
+}
+class CustomerRepository{
+    +Optional<Customer> findCustomerByPeselNumber(String pesel);
+    +void deleteById(Long id);
+}
+class DeviceRepository{
+    +List<Device> findByNameContainingIgnoreCase(String name);
+    +void deleteAllDevicesByCategoryId(Long id);
+}
+
+class CategoryService{
+    +void addCategory()
+    +void removeCategoryById()
+}
+class CustomerService{
+    +void addClient()
+    +void removeCustomerById()
+}
+class DeviceService{
+    +void findDevice()
+    +void addDevice()
+    +void removeDeviceById()
+}
+class RentService{
+    +void rentDevice()
+}
+
+class ApplicationController{
+    +void run()
+    -void chooseOption(Options option)
+    -void exit()
+    -void printOptions()
+    -DeviceService deviceService;
+    -CategoryService categoryService;
+    -CustomerService customerService;
+    -RentService rentService;
+}
+
+ApplicationController o-- DeviceService
+ApplicationController o-- CategoryService
+ApplicationController o-- CustomerService
+ApplicationController o-- RentService
+
+DeviceService o-- DeviceRepository
+DeviceService o-- CategoryRepository
+DeviceService <|-- Service
+
+CategoryService o-- DeviceRepository
+CategoryService o-- CategoryRepository
+CategoryService <|-- Service
+
+CustomerService o-- CustomerRepository
+CustomerService <|-- Service
+
+RentService o-- DeviceRepository
+RentService o-- CustomerRepository
+RentService <|-- Service
+
+CategoryRepository <|-- CrudRepository
+CustomerRepository <|-- CrudRepository
+DeviceRepository <|-- CrudRepository
+CategoryRepository <|-- Repository
+CustomerRepository <|-- Repository
+DeviceRepository <|-- Repository
+
+@enduml
